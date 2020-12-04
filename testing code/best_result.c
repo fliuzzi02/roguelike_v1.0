@@ -12,8 +12,8 @@ void scava_destra(int *map, int rig, int col, int x, int y);
 void scava_sinistra(int *map, int rig, int col, int x, int y);
 
 int main(){
-    int rig = 33;
-    int col = 39;
+    int rig = 23;
+    int col = 29;
     char c;
     // int dim;
     // printf("Inserire dimensione: ");
@@ -24,7 +24,14 @@ int main(){
 
     genera(&map,rig,col);
 
-    scava(&map, rig, col, 1, 3, 1, 3);
+    //scelgo un punto casuale da dove cominciare
+    time_t t;
+    srand((unsigned) time(&t));
+    int rigini = rand()%(rig-2) + 2;
+    int colini = rand()%(col-2) + 2;
+    if(rigini%2 == 0) rigini++;
+    if(colini%2 == 0) colini++;
+    scava(&map, rig, col, rigini, colini, 0, 0);
     map[1][1] = 2;
     map[rig-2][col-2] = 3;
 
