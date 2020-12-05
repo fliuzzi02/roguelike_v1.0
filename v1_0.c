@@ -14,6 +14,7 @@ void scava(int *map, int rig, int col, int x, int y, int xprec, int yprec);
 int adiacenti(int *map, int rig, int col, int x, int y);
 player move(int *map, player p1, char c, int col);
 void credits();
+void easter_egg();
 
 void scava_sotto(int *map, int rig, int col, int x, int y);
 void scava_sopra(int *map, int rig, int col, int x, int y);
@@ -67,6 +68,8 @@ int main(){
             printmap(&map,rig,col);            
         }
     }while(c!='q');
+
+    easter_egg();
 
     return 0;
 }
@@ -219,4 +222,11 @@ void genera(int *map, int rig, int col){
 
 void credits(){
     printf("ROGUELIKE v1.0 \nWritten in C by fliuzzi02\n\nYou are the T in the map, reach the O\nHave fun!\n\n");
+}
+
+void easter_egg(){
+    FILE *in;
+    in = fopen("il_ritorno.txt", "w");
+    fprintf(in, "Il Ritorno\n\nL\'aereo si stacca da terra,\nil tuo cuore con lui.\nCome il cherosene nei motori,\nil sorriso irrompe sulle labbra.\nE brucia dentro te quel sentimento nuevo,\nche ti tiene alta la vita.\nEd è bellissimo perdersi.");
+    fclose(in);
 }
