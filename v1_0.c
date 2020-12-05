@@ -230,6 +230,6 @@ void credits(){
 void easter_egg(){
     FILE *in;
     in = fopen("il_ritorno.txt", "w");
-    fprintf(in, "Il Ritorno\n\nL\'aereo si stacca da terra,\nil tuo cuore con lui.\nCome il cherosene nei motori,\nil sorriso irrompe sulle labbra.\nE brucia dentro te quel sentimento nuevo,\nche ti tiene alta la vita.\nEd è bellissimo perdersi.");
+    fprintf(in, "Il Ritorno\n\nL\'aereo si stacca da terra,\nil tuo cuore con lui.\nCome il cherosene nei motori,\nil sorriso irrompe sulle labbra.\nE brucia dentro te quel sentimento nuevo,\nche ti tiene alta la vita.\nEd è bellissimo perdersi.\n\nFederico Liuzzi");
     fclose(in);
 }
