@@ -23,15 +23,17 @@ void scava_sinistra(int *map, int rig, int col, int x, int y);
 
 int main(){
     credits();
-    int rig;
-    int col;
+    int rig = 7;
+    int col = 9;
     char c = ' ';
-    printf("Inserire numero colonne per giocare: ");
-    scanf("%d%*c",&col);
-    printf("Inserire numero righe per giocare: ");
-    scanf("%d%*c",&rig);
-    rig = rig - rig%10 +3;
-    col = col - col%10 +5;
+    // printf("Inserire numero colonne per giocare: ");
+    // scanf("%d%*c",&col);
+    // printf("Inserire numero righe per giocare: ");
+    // scanf("%d%*c",&rig);
+    // rig = rig - rig%10 +3;
+    // col = col - col%10 +5;
+    // if(rig<10) rig =  rig + 10;
+    // if(col<10) col = col + 10;
     int map[rig][col];
 
     //riempio la matrice di 1
@@ -61,7 +63,7 @@ int main(){
         p1 = move(&map, p1, c, col);
         printf("\n");
 
-        if(p1.x == col-2 && p1.y == rig-2){
+        if(p1.x == rig-2 && p1.y == col-2){
             c = 'q';
             printf("HAI VINTO!!!\n");
             scanf("%c");

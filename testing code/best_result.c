@@ -57,7 +57,7 @@ int main(){
         p1 = move(&map, p1, c, col);
         printf("\n");
 
-        if(p1.x == col-2 && p1.y == rig-2){
+        if(p1.x == rig-2 && p1.y == col-2){
             c = 'q';
             printf("HAI VINTO!!!\n");
             scanf("%c");
