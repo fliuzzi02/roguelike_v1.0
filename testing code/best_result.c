@@ -13,6 +13,7 @@ void genera(int *map, int rig, int col);
 void scava(int *map, int rig, int col, int x, int y, int xprec, int yprec);
 int adiacenti(int *map, int rig, int col, int x, int y);
 player move(int *map, player p1, char c, int col);
+void credits();
 
 void scava_sotto(int *map, int rig, int col, int x, int y);
 void scava_sopra(int *map, int rig, int col, int x, int y);
@@ -20,8 +21,9 @@ void scava_destra(int *map, int rig, int col, int x, int y);
 void scava_sinistra(int *map, int rig, int col, int x, int y);
 
 int main(){
-    int rig = 9;
-    int col = 9;
+    credits();
+    int rig = 15;
+    int col = 19;
     char c = ' ';
     // int dim;
     // printf("Inserire dimensione: ");
@@ -58,7 +60,11 @@ int main(){
             c = 'q';
             printf("HAI VINTO!!!\n");
             scanf("%c");
-        }else printmap(&map,rig,col);
+        }else{
+            for(int i=0; i<100;i++) printf("\n");
+            credits();
+            printmap(&map,rig,col);            
+        }
     }while(c!='q');
 
     return 0;
@@ -208,4 +214,8 @@ void genera(int *map, int rig, int col){
     //*(&map[0]+col+1) = 2;
     //*(&map[0]+((rig-2)*col)+col-2) = 3;
     //*(&map[0]+3*col+2) = 4; //stringa di test indici    
+}
+
+void credits(){
+    printf("ROGUELIKE v1.0 \nWritten in C by fliuzzi02\n\nYou are the T in the map, reach the O\nHave fun!\n\n");
 }
