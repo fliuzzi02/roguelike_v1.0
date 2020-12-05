@@ -22,15 +22,16 @@ void scava_sinistra(int *map, int rig, int col, int x, int y);
 
 int main(){
     credits();
-    int rig = 15;
-    int col = 19;
+    int rig;
+    int col;
     char c = ' ';
-    // int dim;
-    // printf("Inserire dimensione: ");
-    // scanf("%d%*c",&dim);
+    printf("Inserire numero colonne per giocare: ");
+    scanf("%d%*c",&col);
+    printf("Inserire numero righe per giocare: ");
+    scanf("%d%*c",&rig);
+    rig = rig - rig%10 +3;
+    col = col - col%10 +5;
     int map[rig][col];
-    // rig = dim;
-    // col = dim;
 
     genera(&map, rig, col);
 
