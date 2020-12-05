@@ -23,17 +23,17 @@ void scava_sinistra(int *map, int rig, int col, int x, int y);
 
 int main(){
     credits();
-    int rig = 7;
-    int col = 9;
+    int rig;
+    int col;
     char c = ' ';
-    // printf("Inserire numero colonne per giocare: ");
-    // scanf("%d%*c",&col);
-    // printf("Inserire numero righe per giocare: ");
-    // scanf("%d%*c",&rig);
-    // rig = rig - rig%10 +3;
-    // col = col - col%10 +5;
-    // if(rig<10) rig =  rig + 10;
-    // if(col<10) col = col + 10;
+    printf("Inserire numero colonne per giocare: ");
+    scanf("%d%*c",&col);
+    printf("Inserire numero righe per giocare: ");
+    scanf("%d%*c",&rig);
+    rig = rig - rig%10 +3;
+    col = col - col%10 +5;
+    if(rig<10) rig =  rig + 10;
+    if(col<10) col = col + 10;
     int map[rig][col];
 
     //riempio la matrice di 1
