@@ -34,9 +34,10 @@ int main(){
     col = col - col%10 +5;
     int map[rig][col];
 
+    //riempio la matrice di 1
     genera(&map, rig, col);
 
-    //scelgo un punto casuale da dove cominciare
+    //scelgo un punto casuale da dove cominciare a scavare la matrice
     time_t t;
     srand((unsigned) time(&t));
     int rigini = rand()%(rig-2) + 2;
@@ -44,6 +45,8 @@ int main(){
     if(rigini%2 == 0) rigini++;
     if(colini%2 == 0) colini++;
     scava(&map, rig, col, rigini, colini, 0, 0);
+
+    //posizione giocatore e uscita
     map[1][1] = 2;
     map[rig-2][col-2] = 3;
 
