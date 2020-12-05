@@ -1,10 +1,18 @@
 #include<stdio.h>
+#include<time.h>
+#include<stdlib.h>
+
+typedef struct{
+    int x;
+    int y;
+} player;
 
 char convert(int n);
 void printmap(int *map, int rig, int col);
 void genera(int *map, int rig, int col);
 void scava(int *map, int rig, int col, int x, int y, int xprec, int yprec);
 int adiacenti(int *map, int rig, int col, int x, int y);
+player move(int *map, player p1, char c, int col);
 
 void scava_sotto(int *map, int rig, int col, int x, int y);
 void scava_sopra(int *map, int rig, int col, int x, int y);
@@ -12,9 +20,9 @@ void scava_destra(int *map, int rig, int col, int x, int y);
 void scava_sinistra(int *map, int rig, int col, int x, int y);
 
 int main(){
-    int rig = 23;
-    int col = 29;
-    char c;
+    int rig = 9;
+    int col = 9;
+    char c = ' ';
     // int dim;
     // printf("Inserire dimensione: ");
     // scanf("%d%*c",&dim);
@@ -22,7 +30,7 @@ int main(){
     // rig = dim;
     // col = dim;
 
-    genera(&map,rig,col);
+    genera(&map, rig, col);
 
     //scelgo un punto casuale da dove cominciare
     time_t t;
@@ -36,10 +44,61 @@ int main(){
     map[rig-2][col-2] = 3;
 
     printmap(&map,rig,col);
+    player p1;
+    p1.x = 1;
+    p1.y = 1;
+    
+    do{
+        printf("\nChose your move (w,a,s,d; q to exit): ");
+        scanf("%c%*c",&c);
+        p1 = move(&map, p1, c, col);
+        printf("\n");
 
-    printf("\n Press enter to exit...");
-    scanf("%c", &c);
+        if(p1.x == col-2 && p1.y == rig-2){
+            c = 'q';
+            printf("HAI VINTO!!!\n");
+            scanf("%c");
+        }else printmap(&map,rig,col);
+    }while(c!='q');
+
     return 0;
+}
+
+player move(int *map, player p1, char c, int col){
+    int x = p1.x;
+    int y = p1.y;
+    if(c=='w'){
+        if(*(&map[0]+(x-1)*col+y) != 1){
+            *(&map[0]+(x-1)*col+y) = 2;
+            *(&map[0]+(x)*col+y) = 0;
+            x--;
+        }
+    }
+    if(c=='a'){
+        if(*(&map[0]+x*col+y-1) != 1){
+            *(&map[0]+x*col+y-1) = 2;
+            *(&map[0]+(x)*col+y) = 0;
+            y--;
+        }
+    }
+    if(c=='s'){
+        if(*(&map[0]+(x+1)*col+y) != 1){
+            *(&map[0]+(x+1)*col+y) = 2;
+            *(&map[0]+(x)*col+y) = 0;
+            x++;
+        }
+    }
+    if(c=='d'){
+        if(*(&map[0]+x*col+y+1) != 1){
+            *(&map[0]+x*col+y+1) = 2;
+            *(&map[0]+(x)*col+y) = 0;
+            y++;
+        }
+    }
+    p1.x=x;
+    p1.y=y;
+
+    return p1;
 }
 
 void scava(int *map, int rig, int col, int x, int y, int xprec, int yprec){
